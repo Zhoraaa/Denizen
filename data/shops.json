@@ -1,0 +1,93 @@
+{
+  "Магазин всяких штучек": {
+    "1": { "item": "chicken", "cost": "1" },
+    "2": { "item": "diamond", "cost": "5" },
+    "3": { "item": "wheat", "vault": "2" },
+    "4": { "item": "sacrifice_hammer", "vault": "600", "cost": "1900" }
+  },
+  "Столовая": {
+    "1": { "item": "cocoa_beans", "cost": "10", "vault": "5" },
+    "2": { "item": "honey_bottle", "cost": "10", "vault": "5" },
+    "3": { "item": "potion", "display": "Чай", "cost": "10", "vault": "5" },
+    "4": {
+      "item": "baked_potato",
+      "display": "Omlett",
+      "cost": "10",
+      "vault": "5"
+    },
+    "5": { "item": "cookie", "display": "Эскимо", "cost": "10", "vault": "5" },
+    "6": {
+      "item": "bread",
+      "display": "Медовый бутерброд",
+      "cost": "10",
+      "vault": "5"
+    },
+    "7": {
+      "item": "pumpkin_pie",
+      "display": "Вишнёвый пирог",
+      "cost": "10",
+      "vault": "5"
+    },
+    "8": {
+      "item": "pumpkin_pie",
+      "display": "Rotebetekuchen",
+      "cost": "10",
+      "vault": "5"
+    },
+    "9": {
+      "item": "pumpkin_pie",
+      "display": "Brombeerkuchen",
+      "cost": "10",
+      "vault": "5"
+    },
+    "10": { "item": "bread", "display": "Pizza", "cost": "10", "vault": "5" },
+    "11": { "item": "suspicious_stew", "cost": "10", "vault": "5" },
+    "12": { "item": "rabbit_stew", "cost": "10", "vault": "5" },
+    "13": {
+      "item": "rabbit_stew",
+      "display": "KÄsesuppe",
+      "cost": "10",
+      "vault": "5"
+    },
+    "14": {
+      "item": "rabbit_stew",
+      "display": "Tomatensuppe mit GemÜse",
+      "cost": "10",
+      "vault": "5"
+    },
+    "15": {
+      "item": "rabbit_stew",
+      "display": "Lauchsuppe mit GemÜse",
+      "cost": "10",
+      "vault": "5"
+    },
+    "16": {
+      "item": "beetroot_soup",
+      "display": "Schale blauer Beeren",
+      "cost": "10",
+      "vault": "5"
+    },
+    "17": {
+      "item": "bread",
+      "display": "Spiegelei",
+      "cost": "10",
+      "vault": "5"
+    },
+    "18": {
+      "item": "milk_bucker",
+      "display": "Маринованые огурчики",
+      "cost": "10",
+      "vault": "5"
+    },
+    "19": {
+      "item": "cooked_salmon",
+      "display": "Консервы",
+      "cost": "10",
+      "vault": "5"
+    },
+    "20": { "item": "crimson_fungus", "cost": "10", "vault": "5" },
+    "21": { "item": "chorus_fruit", "cost": "10", "vault": "5" },
+    "22": { "item": "golden_apple", "cost": "10", "vault": "5" },
+    "23": { "item": "golden_carrot", "cost": "10", "vault": "5" }
+  }
+}
