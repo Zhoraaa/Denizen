@@ -6,7 +6,6 @@ the_serum:
     lore:
     - <gold><bold>☉
     mechanisms:
-        components_patch: <map[minecraft:enchantment_glint_override=true]>
         hides: all
         color: orange
     recipes:
@@ -16,6 +15,7 @@ the_serum:
             ingredient: infected_slime_extract
 
 brew_serum:
+    debug: false
     type: world
     events:
         on brewing stand brews:
@@ -31,7 +31,7 @@ brew_serum:
         - if <context.entities.any>:
             - foreach <context.entities.filter[entity_type.equals[player]]> as:__player:
                 - run cure def:<player>|true
-        on player clicks item in inventory:
+        on player clicks in inventory:
         - wait 1t
         - if <context.clicked_inventory.id_holder.has_flag[serum_brewing]> and !<context.clicked_inventory.slot[<context.raw_slot>].script.name.equals[infected_slime_extract]||false>:
             - flag <context.clicked_inventory.id_holder> serum_brewing:!

@@ -9,6 +9,7 @@ postman_name:Почтальон
 quest_mimpi_start_stage:0
 temperature:47.91
 dualDungeonBot_name:Секре-бот
+amulet_belt:li@i@rabbit_foot[display=§6Железное знамя;lore=li@§bОберег §7§oпоследователей бога войны.&pipe§7§oНекогда такие использовали в качестве&pipe§6ключей §7§oна военных объектах.&pipe;script=amulet_of_armor_and_keys]|
 dualDungeonBot_quests_stage:0
 ap_bal:500
 agas_quests_stage:0

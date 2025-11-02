@@ -1,4 +1,4 @@
-cure:
+cure_cmd:
     type: command
     name: cure
     description: Лечит игрока от болезни

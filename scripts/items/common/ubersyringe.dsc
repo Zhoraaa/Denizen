@@ -33,12 +33,13 @@ ubersyringe:
 # Огнерождённый - жгучая кровь
 # Остальные - обычная кровь
 ubersyringe_use:
+    debug: false
     type: world
     events:
-        on entity damaged by player:
+        on entity damaged by player with:ubersyringe:
         # Сбор крови
             - define bloodless <script[disease].data_key[bloodless]>
-            - if <player.item_in_hand.display.strip_color.advanced_matches[Убер-шприц]||false> && <player.item_in_hand.script.name.advanced_matches[ubersyringe]||false> && <player.item_in_offhand.material.advanced_matches[glass_bottle]> && <context.cause.advanced_matches[entity_attack|entity_sweep_attack]> :
+            - if <player.item_in_offhand.material.advanced_matches[glass_bottle]> && <context.cause.advanced_matches[entity_attack]> :
                 - if !<context.entity.entity_type.advanced_matches[<[bloodless]>]>:
                     - take item:glass_bottle from:<player.inventory> quantity:1
                     - if <context.entity.has_flag[origin_marker]> && <context.entity.flag[origin_marker].advanced_matches[blazeborn|magmacube]> && !<context.entity.has_flag[infected]>:

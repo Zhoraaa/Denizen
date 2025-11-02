@@ -1,0 +1,17 @@
+ap_bal:0
+goblin_mood:0
+agas_quests_stage:0
+artist_name:Художница
+doge_name:Пёс-стражник
+agentFox_name:Лисица
+mimpi_name:Призрак
+goblin_name:Гоблин
+agentMiniFox_name:Лисёнок
+postman_name:Почтальон
+quest_mimpi_start_stage:0
+vampire:l@14.5,74.5,17.5,world
+temperature:0
+relship_catPolyglot_to_present:128
+relship_catPolyglot:0
+amulet_belt:li@i@rabbit_foot[display=§6Возвращатель;components_patch=map@[minecraft:max_stack_size=int:1;denizen:__data_version=4189];flag_map=map@[amulet_level=1];lore=li@§b❤ Защитный амулет&pipe§7§oПозволяет §aпарировать §7§oудары&pipe§7§oпри помощи §6щита&pipe;script=amulet_of_parry]|
+\exparry_cd:map@[__value=true;__expiration=time@2025/09/17_19:29:26:0796_+05:00]
