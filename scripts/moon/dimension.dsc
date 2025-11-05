@@ -14,7 +14,7 @@ moon:
             - execute as_op silent 'attribute <player.name> minecraft:safe_fall_distance modifier remove moon'
 
         on delta time secondly every:1:
-            - foreach <server.online_players.filter[location.world.name.advanced_matches[!world_cctlm_moon]].filter[location.y.is_more_than[400]]> as:__player:
+            - foreach <server.online_players.filter[location.world.name.advanced_matches[!world_cctlm_moon]].filter[location.y.is_more_than[320]]> as:__player:
                 # Зайти на Луну
                 - execute as_op silent 'warp moon <player.name>'
             - foreach <server.online_players.filter[location.world.name.advanced_matches[world_cctlm_moon]].filter[location.y.is_less_than[-32]]> as:__player:
