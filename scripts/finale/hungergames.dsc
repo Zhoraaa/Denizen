@@ -1,7 +1,7 @@
 hg_wand:
     type: item
     material: blaze_rod
-    display name: <gold>Указатель центра [HG]lt
+    display name: <gold>Указатель центра [HG]
     lore:
     - <&b>[ЛКМ] <&7>- Указать центр поля (Блок)
     - <&6>[ПКМ] <&7>- Просмотр круга спавна
@@ -11,8 +11,10 @@ hg_centering:
     debug: false
     events:
         on player left clicks block with:hg_wand:
-            - playeffect at:<context.location> effect:REDSTONE_TORCH_BURNOUT quantity:3
-            - flag server hg.center:<context.location.center>
+            - define loc <context.location>
+            - define loc <context.location.up[1]> if:<[loc].material.is_solid>
+            - playeffect at:<[loc]> effect:REDSTONE_TORCH_BURNOUT quantity:3
+            - flag server hg.center:<[loc].center>
             - determine cancelled
         on player right clicks block with:hg_wand:
             - if <server.has_flag[hg.center].not>:
@@ -22,8 +24,6 @@ hg_centering:
             - playeffect at:<server.flag[hg.center]> effect:flame quantity:50 offset:0.3 targets:<server.online_players>
             - foreach <server.flag[hg.center].points_around_y[radius=<server.flag[hg.rad]||2>;points=90]> as:p:
                 - playeffect at:<[p]> effect:flame quantity:1 offset:0 targets:<server.online_players>
-        on player walks flagged:hg_stan:
-            - determine cancelled
         on player jumps flagged:hg_stan:
             - determine cancelled
 
@@ -64,15 +64,34 @@ hg_ready:
 
         - foreach <server.flag[hg.center].points_around_y[radius=<server.flag[hg.rad]||2>;points=<[members].size>]> as:p:
             - define pl <[members].get[<[loop_index]>]>
+            - adjust <[pl]> fov_multiplier:1.5
             - playeffect at:<[p]> effect:flame quantity:1 offset:0 targets:<server.online_players>
             - teleport <[pl]> <[p].down[0.5]>
             - look <[pl]> <server.flag[hg.center].up[1]>
             - modifyblock <[p].down[1]> material:chiseled_stone_bricks
             - wait 2t
-            - flag <[pl]> hg_stan:true expire:1m
+            - flag <[pl]> hg_stan:true expire:5m
+            - cast SLOWNESS duration:5m <[pl]> amplifier:255
+
+        - runlater hg_start delay:1m
 
 hg_start:
     type: task
     script:
+        - playsound sound:block.note_block.pling <player.location> pitch:1.2
+        - title title:<red><bold>3 fade_in:5t stay:15t
+        - wait 1
+        - playsound sound:block.note_block.pling <player.location> pitch:1.2
+        - title title:<gold><bold>2 fade_in:0 stay:1s
+        - wait 1
+        - playsound sound:block.note_block.pling <player.location> pitch:1.2
+        - title title:<yellow><bold>1  fade_in:0 stay:1s
+        - wait 1
+        - playsound sound:block.note_block.pling <player.location> pitch:1.5
+        - title title:<green><bold>GO! fade_in:0 stay:1s
+        - wait 10t
+        - title title: stay:1s
+
+        - cast SLOWNESS remove <server.online_players>
         - flag <server.online_players_flagged[hg_stan]> hg_stan:!
 
