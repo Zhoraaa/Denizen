@@ -2,16 +2,17 @@ moon:
     type: world
     debug: false
     events:
-        on player changes world:
-        - if <context.destination_world.equals[world_cctlm_moon]>:
+        on player changes world to:*nether*:
+            - ratelimit <player> 4t
             # Изменение гравитации на лунное значение
-            - execute as_op silent 'attribute <player.name> minecraft:gravity modifier add moon -0.06 add_value'
-            - execute as_op silent 'attribute <player.name> minecraft:safe_fall_distance modifier add moon 6 add_value'
-        #
-        - if <context.origin_world.equals[world_cctlm_moon]>:
-            # Изменение гравитации на дефолтное значение
-            - execute as_op silent 'attribute <player.name> minecraft:gravity modifier remove moon'
-            - execute as_op silent 'attribute <player.name> minecraft:safe_fall_distance modifier remove moon'
+            - adjust <player> attribute_base_values:<map[GRAVITY=0.013]>
+            - adjust <player> attribute_base_values:<map[SAFE_FALL_DISTANCE=12]>
+        on player changes world:
+            - ratelimit <player> 4t
+            # Изменение гравитации на лунное дефолтное значение
+            - if <context.origin_world.name.advanced_matches[*nether*]>:
+                - adjust <player> attribute_base_values:<map[GRAVITY=<player.attribute_default_value[GRAVITY]>]>
+                - adjust <player> attribute_base_values:<map[SAFE_FALL_DISTANCE=<player.attribute_default_value[SAFE_FALL_DISTANCE]>]>
 
         on delta time secondly every:1:
             - foreach <server.online_players.filter[location.world.name.advanced_matches[!world_cctlm_moon]].filter[location.y.is_more_than[320]]> as:__player:
