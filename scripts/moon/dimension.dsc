@@ -2,7 +2,7 @@ moon:
     type: world
     debug: false
     events:
-        on player changes world to:*nether*:
+        on player changes world to:*moon*:
             - ratelimit <player> 4t
             # Изменение гравитации на лунное значение
             - adjust <player> attribute_base_values:<map[GRAVITY=0.013]>
@@ -10,7 +10,7 @@ moon:
         on player changes world:
             - ratelimit <player> 4t
             # Изменение гравитации на лунное дефолтное значение
-            - if <context.origin_world.name.advanced_matches[*nether*]>:
+            - if <context.origin_world.name.advanced_matches[*moon*]>:
                 - adjust <player> attribute_base_values:<map[GRAVITY=<player.attribute_default_value[GRAVITY]>]>
                 - adjust <player> attribute_base_values:<map[SAFE_FALL_DISTANCE=<player.attribute_default_value[SAFE_FALL_DISTANCE]>]>
 

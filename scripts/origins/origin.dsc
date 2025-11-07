@@ -1,7 +1,7 @@
-origin_selection:
-    type: world
-    events:
-        on player joins flagged:!origin:
+# origin_selection:
+#     type: world
+#     events:
+#         on player joins flagged:!origin:
         # - narrate 1
 
 #
