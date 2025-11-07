@@ -1,6 +1,6 @@
 moon:
     type: world
-    debug: true
+    debug: false
     events:
         on player changes world to:*moon*:
             - ratelimit <player> 4t
