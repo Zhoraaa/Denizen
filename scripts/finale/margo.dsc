@@ -15,11 +15,14 @@ margo_world:
         on player right clicks bedrock location_flagged:margo_core with:redcon:
             - take item:redcon if:<player.gamemode.advanced_matches[CREATIVE|SPECTATOR].not>
             - define margo_core <context.location.center>
+            - define planBloc <player.location>
             - repeat 30:
                 - playeffect effect:TRAIL at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#2998ff]>;target=<[margo_core]>;duration=<util.random.int[1].to[3]>s]
                 - playeffect effect:TRAIL at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#ffc929]>;target=<[margo_core]>;duration=<util.random.int[1].to[3]>s]
                 - wait 10t
             - foreach <server.online_players.filter[gamemode.advanced_matches[!SPECTATOR]]> as:__player:
+                - if <player.location.world> != <context.location.world>:
+                    - teleport <player> <[planBloc]>
                 - repeat 100:
                     - playeffect effect:TRAIL at:<[margo_core]> offset:0 quantity:1 special_data:[color=<color[#2998ff]>;target=<player.location.up[1]>;duration=1s] targets:<server.online_players>
                     - playeffect effect:TRAIL at:<[margo_core]> offset:0 quantity:1 special_data:[color=<color[#ffc929]>;target=<[margo_core].up[2]>;duration=1s] targets:<server.online_players>
