@@ -15,6 +15,7 @@ margo_world:
         on player right clicks bedrock location_flagged:margo_core with:redcon:
             - take item:redcon if:<player.gamemode.advanced_matches[CREATIVE|SPECTATOR].not>
             - define margo_core <context.location.center>
+            - flag <[margo_core]> margo_core:!
             - define planBloc <player.location>
             - repeat 30:
                 - playeffect effect:TRAIL at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#2998ff]>;target=<[margo_core]>;duration=<util.random.int[1].to[3]>s]
@@ -30,7 +31,10 @@ margo_world:
                     - wait 1t
                 - playeffect effect:DUST_COLOR_TRANSITION at:<player.location.up[1]> offset:0.4,0.8,0.4 quantity:100 special_data:[size=1.5;from=<color[#2998ff]>;to=<color[#ffc929]>]
                 - adjust <player> gamemode:spectator
+
             - if <player.has_flag[team_goners]>:
                 - customevent id:goners_win
             - if <player.has_flag[team_rewrit]>:
                 - customevent id:rewrit_win
+
+            - flag <[margo_core]> margo_core:true
