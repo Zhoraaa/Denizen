@@ -33,8 +33,8 @@ mimpi_interact:
         2:
             click trigger:
                 script:
-                    - if <player.item_in_hand.script.name||null> == cctlm_freethinking:
-                        - take itemhand:cctlm_freethinking quantity:1 from:inventory
+                    - if <player.item_in_hand.script.name||null> == freethinking:
+                        - take itemhand:freethinking quantity:1 from:inventory
                         - narrate '<&lt><player.flag[mimpi_name]><&gt> Ой, спасибочки! Ты доказал свою полезность! Теперь иди, и добудь мне ещё!'
                         - flag player quest_mimpi_start_stage:3
                         - execute as_op silent 'warp green_hills <player.name>'
@@ -55,19 +55,19 @@ mimpi_interact:
         3:
             click trigger:
                 script:
-                    - if <player.item_in_hand.script.name||null> == cctlm_freethinking:
-                        - take itemhand:cctlm_freethinking quantity:1 from:inventory
+                    - if <player.item_in_hand.script.name||null> == freethinking:
+                        - take itemhand:freethinking quantity:1 from:inventory
                         - narrate '<&lt><player.flag[mimpi_name]><&gt> Ням-ням!!!'
                         - run count_freethinks_incrementing
                         - experience drop <player.location> 50
                         - run rand_drop def.repeats:5
-                    - else if <player.item_in_hand.script.name||null> == cctlm_canon:
-                        - take itemhand:cctlm_canon quantity:1 from:inventory
+                    - else if <player.item_in_hand.script.name||null> == canon:
+                        - take itemhand:canon quantity:1 from:inventory
                         - narrate '<&lt><player.flag[mimpi_name]><&gt> Ням-ням!!!'
                         - run count_canons_incrementing
                         - run rand_drop def.repeats:2
-                    - else if <player.item_in_hand.script.name||null> == cctlm_redcon:
-                        - take itemhand:cctlm_redcon quantity:1 from:inventory
+                    - else if <player.item_in_hand.script.name||null> == redcon:
+                        - take itemhand:redcon quantity:1 from:inventory
                         - narrate '<&lt><player.flag[mimpi_name]><&gt> Ням-ням!!!'
                         - run count_redcons_incrementing
                         - run rand_drop def.repeats:8

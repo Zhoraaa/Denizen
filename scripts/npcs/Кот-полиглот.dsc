@@ -39,7 +39,7 @@ catPolyglot_interact:
                             - narrate '<&lt>Кот-полиглот<&gt> Возьми этот not-so-big present!'
                         - playsound <player> sound:entity_cat_ambient sound_category:voice volume:1 pitch:1
                         - wait 3
-                        - drop <location[<npc.location>].add[0, 1, 0]> cctlm_freethinking
+                        - drop <location[<npc.location>].add[0, 1, 0]> freethinking
                         - playeffect effect:bubble_pop at:<location[<npc.location>].add[0, 0.5, 0]> visibility:100 quantity:100 offset:0.0'
                         - flag player relship_catPolyglot:<player.flag[relship_catpolyglot].min[<player.flag[relship_catpolyglot_to_present]>]>
                         - flag player relship_catPolyglot_to_present:*:1.2

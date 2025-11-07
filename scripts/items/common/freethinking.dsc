@@ -1,5 +1,5 @@
 # Свободомыслие
-cctlm_freethinking:
+freethinking:
     type: item
     material: phantom_membrane
     mechanisms:
@@ -15,4 +15,4 @@ cctlm_freethinking:
             type: blast
             cook_time: 60s
             experience: 50
-            input: cctlm_canon
+            input: canon

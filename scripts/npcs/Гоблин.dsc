@@ -54,7 +54,7 @@ goblin_interact:
                 1:
                     trigger: /regex:(?i)(?u)Да/
                     script:
-                        - give cctlm_freethinking quantity:1
+                        - give freethinking quantity:1
                         - narrate '<&lt><player.flag[goblin_name]><&gt> Приятно иметь с вами дело :)'
                         - flag player quest_mimpi_start_stage:2
                         - zap 1

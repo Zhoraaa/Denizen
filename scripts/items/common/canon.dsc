@@ -1,5 +1,5 @@
 # Канон
-cctlm_canon:
+canon:
     type: item
     material: phantom_membrane
     mechanisms:

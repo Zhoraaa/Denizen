@@ -1,5 +1,5 @@
 # Редкон
-cctlm_redcon:
+redcon:
     type: item
     material: phantom_membrane
     mechanisms:
