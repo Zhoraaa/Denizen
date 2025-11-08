@@ -1,10 +1,3 @@
-origin_selection:
-    type: world
-    events:
-        on player joins flagged:!origin:
-        - narrate 1
-
-#
 origin_list:
     type: data
     human:
