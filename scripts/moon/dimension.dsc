@@ -23,11 +23,10 @@ moon:
                 - execute as_op silent 'warp green_hills <player.name>'
         on delta time secondly every:2:
             - foreach <server.online_players.filter[location.world.name.advanced_matches[*moon*]]> as:__player:
-                - while !<player.proc[imprability_check]||false> && <player.is_online||false> && <player.is_spawned||false> && <player.location.world.name.advanced_matches[*moon*]>:
-                    - stop if:<player.gamemode.advanced_matches[CREATIVE|SPECTATOR]>
-                    - stop if:<player.has_flag[infected]>
-                    - stop if:<player.has_flag[cured]>
-                    - stop if:<player.has_flag[origin]>
+                - while !<player.proc[imprability_check]||false> && <player.is_online||false> && <player.is_spawned||false> && <player.location.world.name.advanced_matches[*moon*]> && <player.gamemode.advanced_matches[SURVIVAL|ADVENTURE]>:
+                    - while stop if:<player.has_flag[infected]>
+                    - while stop if:<player.has_flag[cured]>
+                    - while stop if:<player.has_flag[origin]>
                     - hurt <player> 1
                     - cast confusion duration:10s amplifier:0 no_icon hide_particles
                     # Заражение
