@@ -18,12 +18,12 @@ teams_world:
         on player damages player with:team_wand:
             - ratelimit <player> 4t
             - team name:goners add:<context.entity>
-            - flag <context.entity> team_goners:true
-            - flag <context.entity> team_rewrit:!
-            - narrate targets:<server.players_flagged[team_goners]> '<&c><context.entity.name> теперь в команде отступников.'
+            - flag <context.entity> team:goners
+            - announce '<&c><context.entity.name> теперь в команде отступников.'
         on player right clicks player with:team_wand:
             - ratelimit <player> 4t
             - team name:rewrit add:<context.entity>
-            - flag <context.entity> team_rewrit:true
-            - flag <context.entity> team_goners:!
-            - narrate targets:<server.players_flagged[team_rewrit]> '<&b><context.entity.name> теперь в команде переписи.'
+            - flag <context.entity> team:rewrit
+            - announce '<&b><context.entity.name> теперь в команде переписи.'
+        on player damages player flagged:team:
+            - determine cancelled if:<context.damager.flag[team].equals[<context.entity.flag[team]>].is_truthy>

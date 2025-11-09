@@ -39,11 +39,24 @@ margo_world:
                     - playeffect effect:DUST at:<server.online_players.filter[gamemode.advanced_matches[!SPECTATOR]].parse[location.up[1]]> offset:6 quantity:<util.random.int[4].to[12]> special_data:[color=<color[#ca14fc]>;size=<util.random.int[0].to[1]>.<util.random.int[1].to[5]>]
                     - wait 2t
                 - playeffect effect:DUST_COLOR_TRANSITION at:<player.location.up[1]> offset:0.4,0.8,0.4 quantity:100 special_data:[size=1.5;from=<color[#2998ff]>;to=<color[#ffc929]>]
-                - adjust <player> gamemode:spectator
+                - cast invisibility <player> hide_particles no_icon duration:infinite
+                - adjust <player> gamemode:adventure
+            - wait 5
 
-            - if <player.has_flag[team_goners]>:
-                - customevent id:goners_win
-            - if <player.has_flag[team_rewrit]>:
-                - customevent id:rewrit_win
+            - if <player.has_flag[team].equals[goners]>:
+                - run titri def.text:'При помощи Редкона, вы смогли восстановить Маргариту,|словно она никогда и не знала тех бед, что пришлись на её век.|Разобравшись в управлении, не без помощи старой команды. Вы смогли найти дорогу домой.|Опасная случайность, сподвигшая вас биться насмерть за право вернуться не пройдёт бесследно.|Но новые тяготы не так страшны, когда уже прошел через ад.|Впрочем, это уже совсем другая история...'
+            - if <player.has_flag[team].equals[rewrit]>:
+                - run titri def.text:'При помощи Редкона, вы смогли восстановить Маргариту,|словно она никогда и не знала тех бед, что пришлись на её век.|Укрывшись на этом дивном островке безопасности, вы смогли пережить перестройку этого мира в нечто новое, более совершенное.|В новообретённом мире будет место каждому.|Для признания ошибок,|для роста над собой,|для восстановления некогда утраченной дружбы.|Второй шанс, заслуженный кровью и потом.|Впрочем, это уже совсем другая история...'
+
+            - run titri def.text:'Спасибо, что остаётесь с нами. Следующая остановка - ССТ:Technical Invasion!|Конец ССТ: Lost memories.|Конец деменции.'
 
             - flag <context.location> cd:!
+
+titri:
+    type: task
+    definitions: text
+    script:
+        - foreach <[text].as[list].parsed> as:sentence:
+            - playsound <server.online_players> sound:ui.button.click volume:0.35 pitch:1.3
+            - announce <&sp><&color[#3584E4]>Титры<&sp><dark_gray>»<&sp><&color[#DEDDDA]><[sentence]>
+            - wait <[sentence].length.div[20].max[20]||20>t

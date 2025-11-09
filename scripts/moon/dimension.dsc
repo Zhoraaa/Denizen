@@ -2,17 +2,16 @@ moon:
     type: world
     debug: false
     events:
-        on player changes world to:*moon*:
-            - ratelimit <player> 4t
-            # Изменение гравитации на лунное значение
-            - adjust <player> attribute_base_values:<map[GRAVITY=0.013]>
-            - adjust <player> attribute_base_values:<map[SAFE_FALL_DISTANCE=12]>
         on player changes world:
             - ratelimit <player> 4t
             # Изменение гравитации на лунное дефолтное значение
             - if <context.origin_world.name.advanced_matches[*moon*]>:
                 - adjust <player> attribute_base_values:<map[GRAVITY=<player.attribute_default_value[GRAVITY]>]>
                 - adjust <player> attribute_base_values:<map[SAFE_FALL_DISTANCE=<player.attribute_default_value[SAFE_FALL_DISTANCE]>]>
+            # Изменение гравитации на лунное значение
+            - if <context.destination_world.name.advanced_matches[*moon*]>:
+                - adjust <player> attribute_base_values:<map[GRAVITY=0.013]>
+                - adjust <player> attribute_base_values:<map[SAFE_FALL_DISTANCE=12]>
 
         on delta time secondly every:1:
             - foreach <server.online_players.filter[location.world.name.advanced_matches[!*moon*]].filter[location.y.is_more_than[320]]> as:__player:
