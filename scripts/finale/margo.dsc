@@ -65,4 +65,4 @@ titri:
         - foreach <[text].parsed> as:sentence:
             - playsound <server.online_players> sound:ui.button.click volume:0.35 pitch:1.3
             - announce <&sp><&color[#3584E4]>Титры<&sp><dark_gray>»<&sp><&color[#DEDDDA]><[sentence]>
-            - wait <[sentence].length.mul[3].div[20].max[20]||20>t
+            - wait <[sentence].length.round_up_to_precision[20].div[20].max[1].min[20]||1>
