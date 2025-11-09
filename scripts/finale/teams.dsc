@@ -26,4 +26,4 @@ teams_world:
             - flag <context.entity> team:rewrit
             - announce '<&b><context.entity.name> теперь в команде переписи.'
         on player damages player flagged:team:
-            - determine cancelled if:<context.damager.flag[team].equals[<context.entity.flag[team]>].is_truthy>
+            - determine cancelled if:<context.damager.flag[team].equals[<context.entity.flag[team]>]||false>
