@@ -42,18 +42,18 @@ mecreward:
     definitions: npc|__player
     script:
         - execute as_player 'mecreward'
-#
-race_dis_en:
-    type: world
-    definitions: npc|__player
-    events:
-        on player changes world:
-        - if <context.destination_world.name.advanced_matches[academia]>:
-            - execute as_server silent "origin set <player.name> origin human"
-        - else <context.origin_world.name.advanced_matches[academia]>:
-            - if <player.flag[origin_marker].is_truthy>:
-                - execute as_op silent "origin set <player.name> origin <player.flag[origin_marker]>"
-            - else:
-                - teleport <player> <server.flag[origin_select]>
-                - execute as_player silent "warp <player.name> origin_select"
-                - narrate <player> "<red>Похоже кто-то тут не проходил ивент `Командная работа`. Или я просто ебло. Выбери снова расу пжлст и сообщи мне"
+# 
+# race_dis_en:
+#     type: world
+#     definitions: npc|__player
+#     events:
+#         on player changes world:
+#         - if <context.destination_world.name.advanced_matches[academia]>:
+#             - execute as_server silent "origin set <player.name> origin human"
+#         - else <context.origin_world.name.advanced_matches[academia]>:
+#             - if <player.flag[origin_marker].is_truthy>:
+#                 - execute as_op silent "origin set <player.name> origin <player.flag[origin_marker]>"
+#             - else:
+#                 - teleport <player> <server.flag[origin_select]>
+#                 - execute as_player silent "warp <player.name> origin_select"
+#                 - narrate <player> "<red>Похоже кто-то тут не проходил ивент `Командная работа`. Или я просто ебло. Выбери снова расу пжлст и сообщи мне"
