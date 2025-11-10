@@ -29,7 +29,7 @@ margo_world:
             - take item:redcon if:<player.gamemode.advanced_matches[CREATIVE|SPECTATOR].not>
             - ~playsound <server.online_players.parse[location]> sound:block.end_portal.spawn targets:<server.online_players>
             - playsound <server.online_players.parse[location]> sound:entity.ender_dragon.death targets:<server.online_players>
-            - repeat 30:
+            - repeat 20:
                 - playeffect effect:DUST at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#2998ff]>;size=<util.random.int[1].to[3]>]
                 - playeffect effect:DUST at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#ffc929]>;size=<util.random.int[1].to[3]>]
                 - wait <util.random.int[7].to[15]>t
