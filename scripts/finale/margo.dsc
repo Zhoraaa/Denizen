@@ -23,15 +23,17 @@ margo_world:
         on player right clicks bedrock location_flagged:margo_core with:redcon:
             - determine cancelled if:<context.location.has_flag[cd]>
             - flag <context.location> cd:true expire:1m
-            - take item:redcon if:<player.gamemode.advanced_matches[CREATIVE|SPECTATOR].not>
             - define margo_core <context.location.center>
-            - define planBloc <player.location>
+            - define planBloc <[margo_core]>
+            - take item:redcon if:<player.gamemode.advanced_matches[CREATIVE|SPECTATOR].not>
+            - playsound <server.online_players.parse[location]> sound:block.end_portal.spawn targets:<server.online_players>
             - repeat 30:
                 - playeffect effect:DUST at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#2998ff]>;size=<util.random.int[1].to[3]>]
                 - playeffect effect:DUST at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#ffc929]>;size=<util.random.int[1].to[3]>]
                 - wait <util.random.int[7].to[15]>t
+                - run ambient_portal_sound
             - foreach <server.online_players.filter[gamemode.advanced_matches[!SPECTATOR]]> as:__player:
-                - if <player.location.world> != <context.location.world>:
+                - if <player.location.world> != <[margo_core].world>:
                     - teleport <player> <[planBloc]>
                 - repeat 100:
                     - playeffect effect:DUST at:<[margo_core].points_between[<player.location.up[1]>].distance[0.1]> offset:0 quantity:1 special_data:[color=<color[#2998ff]>;size=0.5] targets:<server.online_players>
@@ -42,6 +44,7 @@ margo_world:
                 - cast invisibility <player> hide_particles no_icon duration:infinite
                 - adjust <player> gamemode:adventure
                 - teleport <player> <server.flag[fin_loc]>
+                - playsound <player.location> sound:block.portal.trigger targets:<player>
             - wait 5
 
             - define text <list[При помощи Редкона, вы смогли восстановить Маргариту,|словно она никогда и не знала тех бед, что пришлись на её век.]>
@@ -55,14 +58,21 @@ margo_world:
 
             - run titri def.text:<[text]>
 
-            - flag <context.location> cd:!
+            - flag <[margo_core]> cd:!
 
 titri:
     type: task
     definitions: text[Текст титров]
     script:
-
         - foreach <[text].parsed> as:sentence:
             - playsound <server.online_players> sound:ui.button.click volume:0.35 pitch:1.3
             - announce <&sp><&color[#3584E4]>Титры<&sp><dark_gray>»<&sp><&color[#DEDDDA]><[sentence]>
-            - wait <[sentence].length.round_up_to_precision[20].div[20].max[1].min[20]||1>
+            - wait <[sentence].length.round_up_to_precision[20].div[20].max[1].min[20]||1>\
+
+ambient_portal_sound:
+    type: task
+    definitions: core
+    script:
+        - while <[core].has_flag[cd]>:
+            - playsound <player.location> sound:block.portal.ambient targets:<server.online_players>
+            - wait 6s
