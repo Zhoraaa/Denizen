@@ -59,9 +59,8 @@ margo_world:
             - if <player.has_flag[team]> && <player.flag[team].advanced_matches[rewrit]>:
                 - define text <[text].insert[Укрывшись на этом дивном островке безопасности, вы смогли пережить перестройку этого мира в нечто новое, более совершенное.|В новообретённом мире будет место каждому.|Для признания ошибок,|для роста над собой,|для восстановления некогда утраченной дружбы.|Второй шанс, заслуженный кровью и потом.|Впрочем, это уже совсем другая история...].at[<[text].size.add[1]>]>
 
-            - define text <[text].insert[Спасибо, что остаётесь с нами.|Следующая остановка - ССТ:Technical Invasion!|Конец ССТ: Lost memories.|Конец деменции.].at[<[text].size.add[1]>]>
-
-            - run titri def.text:<[text]>
+            - ~run titri def.text:<[text]>
+            - title fade_in:1s stay:5s fade_out:1s title:<element[<&6><bold>Конец CCT: Lost Memories]> subtitle:<element[<&b>Конец деменции]> targets:<server.online_players>
 
             - flag <[margo_core]> cd:!
 
