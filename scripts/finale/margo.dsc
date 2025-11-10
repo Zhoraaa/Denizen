@@ -31,7 +31,7 @@ margo_world:
                 - playeffect effect:DUST at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#2998ff]>;size=<util.random.int[1].to[3]>]
                 - playeffect effect:DUST at:<[margo_core]> offset:<util.random.int[1].to[3]> quantity:<util.random.int[20].to[50]> special_data:[color=<color[#ffc929]>;size=<util.random.int[1].to[3]>]
                 - wait <util.random.int[7].to[15]>t
-                - run ambient_portal_sound
+                - run ambient_portal_sound def.core:<[margo_core]>
             - foreach <server.online_players.filter[gamemode.advanced_matches[!SPECTATOR]]> as:__player:
                 - if <player.location.world> != <[margo_core].world>:
                     - teleport <player> <[planBloc]>
@@ -73,6 +73,6 @@ ambient_portal_sound:
     type: task
     definitions: core
     script:
-        - while <[core].has_flag[cd]>:
+        - while <[core].has_flag[cd]||false>:
             - playsound <player.location> sound:block.portal.ambient targets:<server.online_players>
-            - wait 6s
+            - wait 10s
