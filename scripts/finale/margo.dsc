@@ -67,7 +67,7 @@ titri:
         - foreach <[text].parsed> as:sentence:
             - playsound <server.online_players> sound:ui.button.click volume:0.35 pitch:1.3
             - announce <&sp><&color[#3584E4]>Титры<&sp><dark_gray>»<&sp><&color[#DEDDDA]><[sentence]>
-            - wait <[sentence].length.round_up_to_precision[20].div[20].max[1].min[20]||1>\
+            - wait <[sentence].length.round_up_to_precision[20].div[20].max[1].min[20]||1>
 
 ambient_portal_sound:
     type: task
