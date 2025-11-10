@@ -34,4 +34,4 @@ teams_world:
             - announce '<context.damager.name> <context.damager.flag[team]>'
             - announce '<context.entity.name> <context.entity.flag[team]>'
             - announce <context.damager.flag[team].equals[<context.entity.flag[team]>]||false>
-            - determine cancelled if:<context.damager.flag[team].equals[<context.entity.flag[team]>]||false>
+            # - determine cancelled if:<context.damager.flag[team].equals[<context.entity.flag[team]>]||false>
