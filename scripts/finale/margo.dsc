@@ -74,5 +74,5 @@ ambient_portal_sound:
     definitions: core
     script:
         - while <[core].has_flag[cd]||false>:
-            - playsound <player.location> sound:block.portal.ambient targets:<server.online_players>
-            - wait 10s
+            - ~playsound <[core]> sound:block.portal.ambient targets:<server.online_players>
+            - wait 5s
