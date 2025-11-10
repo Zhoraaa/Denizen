@@ -43,7 +43,10 @@ margo_world:
                     - playeffect effect:DUST at:<server.online_players.filter[gamemode.advanced_matches[!SPECTATOR]].parse[location.up[1]]> offset:6 quantity:<util.random.int[4].to[12]> special_data:[color=<color[#ca14fc]>;size=<util.random.int[0].to[1]>.<util.random.int[1].to[5]>]
                     - wait 2t
                 - playeffect effect:DUST_COLOR_TRANSITION at:<player.location.up[1]> offset:0.4,0.8,0.4 quantity:100 special_data:[size=1.5;from=<color[#2998ff]>;to=<color[#ffc929]>]
-                - cast invisibility <player> hide_particles no_icon duration:infinite
+                - cast invisibility <player> hide_particles no_icon duration:infinite amplifier:0
+                - cast regeneration <player> hide_particles no_icon duration:infinite
+                - cast saturation <player> hide_particles no_icon duration:infinite
+                - cast absorption <player> hide_particles no_icon duration:infinite
                 - adjust <player> gamemode:adventure
                 - teleport <player> <server.flag[fin_loc]>
                 - playsound <player.location> sound:block.portal.trigger targets:<player>
