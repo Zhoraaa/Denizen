@@ -1,29 +1,31 @@
-team_wand:
+team_item:
     type: item
-    material: breeze_rod
+    material: red_dye
     display name: <&c>Раздел<&b>итель
     lore:
-    - <&c>[ЛКМ] - Отстутпники
-    - <&b>[ПКМ] - Переписчики
+    - <&f>[ЛКМ] <&7> - Выбрать команду
+    - <&f>[ПКМ] <&7> - Присвоить команду
+    - <&c>Отстутпники
+    - <&b>Переписчики
 
 #
 teams_world:
     type: world
     events:
-        after script reload:
-            - team name:goners color:red
-            - team name:goners option:FRIENDLY_FIRE status:never
-            - team name:rewrit color:aqua
-            - team name:rewrit option:FRIENDLY_FIRE status:never
-        on player damages player with:team_wand:
+        on player left clicks block with:team_item:
             - ratelimit <player> 4t
-            - team name:goners add:<context.entity>
-            - flag <context.entity> team:goners
-            - announce '<&c><context.entity.name> теперь в команде отступников.'
-        on player right clicks player with:team_wand:
+            - inventory adjust material:light_blue_dye slot:hand if:<player.item_in_hand.material.name.equals[red_dye]>
+            - inventory adjust material:red_dye slot:hand if:<player.item_in_hand.material.name.equals[light_blue_dye]>
+        on player damages player with:team_item:
+            - announce '<&f><context.entity.name> больше не в команде.' if:<context.entity.has_flag[team]>
+            - flag <context.entity> team:! if:<context.entity.has_flag[team]>
+        on player right clicks player with:team_item:
             - ratelimit <player> 4t
-            - team name:rewrit add:<context.entity>
-            - flag <context.entity> team:rewrit
-            - announce '<&b><context.entity.name> теперь в команде переписи.'
+            - if <player.item_in_hand.material.name.equals[red_dye]>:
+                - flag <context.entity> team:goners
+                - announce '<&c><context.entity.name> теперь в команде отступников.'
+            - if <player.item_in_hand.material.name.equals[light_blue_dye]>:
+                - flag <context.entity> team:rewrit
+                - announce '<&b><context.entity.name> теперь в команде переписи.'
         on player damages player flagged:team:
             - determine cancelled if:<context.damager.flag[team].equals[<context.entity.flag[team]>]||false>
