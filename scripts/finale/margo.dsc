@@ -5,6 +5,7 @@ margo_core:
 
 margo_world:
     type: world
+    debug: false
     events:
         on player places margo_core:
             - define margo_core <context.location.center>
@@ -63,6 +64,7 @@ margo_world:
 
 titri:
     type: task
+    debug: false
     definitions: text[Текст титров]
     script:
         - foreach <[text].parsed> as:sentence:
@@ -72,6 +74,7 @@ titri:
 
 ambient_portal_sound:
     type: task
+    debug: false
     definitions: core
     script:
         - while <[core].has_flag[cd]||false>:
