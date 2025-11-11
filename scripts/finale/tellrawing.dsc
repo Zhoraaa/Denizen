@@ -15,5 +15,5 @@ ch_nick_world:
     type: world
     events:
         on player chats flagged:ch_nick:
-            - determine cancelled passively
             - announce <&a><player.flag[ch_nick]><&sp><dark_gray>»<&sp><&color[#DEDDDA]> <context.message>
+            - determine cancelled passively
