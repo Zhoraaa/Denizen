@@ -1,3 +1,4 @@
+# 
 amulet_of_undying:
     type: item
     material: rabbit_foot
@@ -6,7 +7,6 @@ amulet_of_undying:
     - <&b>❤ Защитный амулет
     - <&7><italic>Примет на себя самый
     - <&7><italic>страшный удар судьбы
-    - <player.flag[origin_marker]>
     mechanisms:
         components_patch: <map[minecraft:max_stack_size=int:1]>
 

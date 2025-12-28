@@ -16,6 +16,7 @@ amulets_world:
 
         on player closes amulet_belt:
         - flag <player> amulet_belt:<context.inventory.list_contents>
+        # Контексты для кастом ивента обновления пояса
         - definemap context:
             player: <player>
             amulet_belt: <player.flag[amulet_belt]>
